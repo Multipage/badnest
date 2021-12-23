@@ -178,6 +178,12 @@ class NestAPI:
                 _LOGGER.error("502 API Response for url {}".format(url))
         return False
 
+    def login(self):
+        status = self._login_google(self._issue_token, self._cookie, self._refresh_token)
+        if not status:
+            _LOGGER.error("Login To Google Failes")
+        return status   
+    
     def _login_google(self, issue_token, cookie, refresh_token):
         if refresh_token is not None:
             headers = {
