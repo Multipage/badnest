@@ -4,7 +4,7 @@
     "documentation": "https://github.com/Multipage/badnest/blob/master/info.md",
     "dependencies": [],
     "codeowners": ["@therealryanbonham","@USA-RedDragon","@Multipage"],
-    "homeassistant": "2025.1.1",
+    "homeassistant": "2025.1.0",
     "version": "v1.2.1",
     "requirements": []
 }
