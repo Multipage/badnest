@@ -6,13 +6,13 @@ from .const import DOMAIN
 
 from homeassistant.const import (
     ATTR_BATTERY_LEVEL,
-    DEVICE_CLASS_TEMPERATURE,
-    TEMP_CELSIUS,
+    ATTR_TEMPERATURE,
+    UnitOfTemperature,
 )
 
 _LOGGER = logging.getLogger(__name__)
 
-PROTECT_SENSOR_TYPES = ["co_status", "smoke_status", "battery_health_state", "motion_detected"]
+PROTECT_SENSOR_TYPES = ["co_status", "smoke_status","battery_level", "battery_health_state", "motion_detected"]
 
 
 async def async_setup_platform(hass, config, async_add_entities, discovery_info=None):
@@ -37,13 +37,13 @@ async def async_setup_platform(hass, config, async_add_entities, discovery_info=
     async_add_entities(protect_sensors)
 
 
-class NestTemperatureSensor(Entity):
-    """Implementation of the Nest Temperature Sensor."""
+class NestSensor(Entity):
+    """Implementation of the Nest  Sensor."""
 
     def __init__(self, device_id, api):
         """Initialize the sensor."""
-        self._name = "Nest Temperature Sensor"
-        self._unit_of_measurement = TEMP_CELSIUS
+        self._name = "Nest  Sensor"
+        self._unit_of_measurement = UnitOfTemperature.CELSIUS
         self.device_id = device_id
         self.device = api
 
@@ -60,12 +60,12 @@ class NestTemperatureSensor(Entity):
     @property
     def state(self):
         """Return the state of the sensor."""
-        return self.device.device_data[self.device_id]["temperature"]
+        return self.device.device_data[self.device_id][""]
 
     @property
     def device_class(self):
         """Return the device class of this entity."""
-        return DEVICE_CLASS_TEMPERATURE
+        return ATTR_TEMPERATURE
 
     @property
     def unit_of_measurement(self):
